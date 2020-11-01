@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: MATH
+Version: 0.1.0
+Summary: A small package of mathematics
+Home-page: https://github.com/albina77/MIPT_Python
+Author: albina_albina77
+Author-email: unbrella77mail.ru
+License: UNKNOWN
+Description: Implementation a few mathematical operations with vectors and numbers
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: str

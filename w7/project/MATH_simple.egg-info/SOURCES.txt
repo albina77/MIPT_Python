@@ -1,0 +1,9 @@
+README.md
+setup.py
+MATH_simple.egg-info/PKG-INFO
+MATH_simple.egg-info/SOURCES.txt
+MATH_simple.egg-info/dependency_links.txt
+MATH_simple.egg-info/top_level.txt
+my_mathematics/__init__.py
+my_mathematics/linear_algebra.py
+my_mathematics/math.py
