@@ -27,42 +27,56 @@ def test_for_complexsqrt():
         assert (cmath.sqrt(tmp2).real, cmath.sqrt(tmp2).imag) == MyComplexMath.sqrt(b, tmp2)
 
 
-def test_for_vector_add():
-    for i in range (100):
-        a1, b1, c1 = random.randint(1, 1000), random.randint(1, 1000), random.randint(1, 1000)
-        a2, b2, c2 = random.randint(1, 1000), random.randint(1, 1000), random.randint(1, 1000)
-        n1 = np.array([a1, b1, c1])
-        v1 = Vector(a1, b1, c1)
-        n2 = np.array([a2, b2, c2])
-        v2 = Vector(a2, b2, c2)
-        n = n1+n2
-        assert Vector(n[0], n[1], n[2]) == v1 + v2
+def test_for_vector_add(n1, v1, n2, v2):
+    for n1_, n2_, v1_, v2_ in zip(n1, n2, v1, v2):
+        n = n1_+n2_
+        assert Vector(n[0], n[1], n[2]) == v1_ + v2_
 
-def test_for_vector_neg():
-    for i in range (100):
-        a1, b1, c1 = random.randint(1, 1000), random.randint(1, 1000), random.randint(1, 1000)
-        n1 = np.array([a1, b1, c1])
-        v1 = Vector(a1, b1, c1)
-        n = -n1
-        assert -v1 == Vector(n[0], n[1], n[2])
+def test_for_vector_neg(n1, v1):
+    for n, v in zip(n1, v1):
+        n_ = -n
+        assert -v == Vector(n_[0], n_[1], n_[2])
 
-def test_for_vector_mul():
-    for i in range (100):
-        a1, b1, c1 = random.randint(1, 1000), random.randint(1, 1000), random.randint(1, 1000)
-        n1 = np.array([a1, b1, c1])
-        v1 = Vector(a1, b1, c1)
+def test_for_vector_mul(n1, v1):
+    for n1_, v1_ in zip(n1, v1):
         n = random.randint(1, 10000)
-        n2 = n1 * n
-        v2 = v1 * n
+        n2 = n1_ * n
+        v2 = v1_ * n
         assert Vector(n2[0], n2[1], n2[2]) == v2
 
-def test_for_vector_eq():
-    for i in range (100):
-        a1, b1, c1 = random.randint(1, 1000), random.randint(1, 1000), random.randint(1, 1000)
-        n1 = np.array([a1, b1, c1])
-        v1 = Vector(a1, b1, c1)
-        n2 = np.array([a1, b1, c1])
-        v2 = Vector(a1, b1, c1)
-        a = n1 == n2
-        assert a.any() == (v1 == v2)
+def test_for_vector_eq(n1, v1):
+    for n1_, n2_, v1_, v2_ in zip(n1, n1, v1, v1):
+        a = n1_ == n2_
+        assert a.any() == (v1_ == v2_)
 
+def test_for_vector_and(n1, v1, n2, v2):
+    for n1_, n2_, v1_, v2_ in zip(n1, n2, v1, v2):
+        if n2_[0] != 0:
+            if n1_[0] / n2_[0] * n2_[1] == n1_[1] and n1_[0] / n2_[0] * n2_[2] == n1_[2]:
+                assert 0 == v1_ & v2_
+        elif n2_[1] != 0:
+            if n1_[1] / n2_[1] * n2_[0] == n1_[0] and n1_[1] / n2_[1] * n2_[2] == n1_[2]:
+                assert 0 == v1_ & v2_
+        elif n2_[2] != 0:
+            if n1_[2] / n2_[2] * n2_[0] == n1_[0] and n1_[2] / n2_[2] * n2_[1] == n1_[1]:
+                assert 0 == v1_ & v2_
+        elif n1_[0] == 0 and n1_[1] == 0 and n1_[2] == 0:
+            assert 0 == v1_ & v2_
+        else:
+            assert Vector(n1_[1]*n2_[2] - n2_[1]*n1_[2], n1_[2]*n2_[0] - n1_[0]*n2_[2], n1_[0]*n2_[1] - n1_[1]*n2_[0]) == v1_ & v2_
+
+'''
+def test_for_vector_length(n1, v1):
+    for n1_, v1_ in zip(n1, v1):
+        a = (n1_[0]**2 + n1_[1]**2 + n1[2]**2)**0.5
+        assert a == v1_.length()
+'''
+
+def test_for_vector_sub(n1, n2, v1, v2):
+    for n1_, n2_, v1_, v2_ in zip(n1, n2, v1, v2):
+        n = n1_ - n2_
+        assert Vector(n[0], n[1], n[2]) == v1_ - v2_
+
+def test_for_vector_str(n1, v1):
+    for n1_, v1_ in zip(n1, v1):
+        assert '({0}, {1}, {2})'.format(str(n1_[0]), str(n1_[1]), str(n1_[2])) == str(v1_)
