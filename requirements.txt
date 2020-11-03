@@ -4,3 +4,4 @@ setuptools
 coverage
 wheel
 pytest
+random
