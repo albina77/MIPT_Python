@@ -19,6 +19,7 @@ def test_for_sqrt():
         assert list1[x] == MyMath.sqrt(a, list2[x])
 
 
+
 def test_for_complexsqrt():
     list2 = [x**2 for x in range(1, 100)]
     b = MyComplexMath()
@@ -44,8 +45,11 @@ def test_for_vector_mul(n1, v1):
         v2 = v1_ * n
         assert Vector(n2[0], n2[1], n2[2]) == v2
 
-def test_for_vector_eq(n1, v1):
+def test_for_vector_eq(n1, v1, n2, v2):
     for n1_, n2_, v1_, v2_ in zip(n1, n1, v1, v1):
+        a = n1_ == n2_
+        assert a.any() == (v1_ == v2_)
+    for n1_, n2_, v1_, v2_ in zip(n1, n2, v1, v2):
         a = n1_ == n2_
         assert a.any() == (v1_ == v2_)
 
@@ -54,23 +58,32 @@ def test_for_vector_and(n1, v1, n2, v2):
         if n2_[0] != 0:
             if n1_[0] / n2_[0] * n2_[1] == n1_[1] and n1_[0] / n2_[0] * n2_[2] == n1_[2]:
                 assert 0 == v1_ & v2_
+            else:
+                assert Vector(n1_[1] * n2_[2] - n2_[1] * n1_[2], n1_[2] * n2_[0] - n1_[0] * n2_[2],
+                              n1_[0] * n2_[1] - n1_[1] * n2_[0]) == v1_ & v2_
+
         elif n2_[1] != 0:
             if n1_[1] / n2_[1] * n2_[0] == n1_[0] and n1_[1] / n2_[1] * n2_[2] == n1_[2]:
                 assert 0 == v1_ & v2_
+            else:
+                assert Vector(n1_[1] * n2_[2] - n2_[1] * n1_[2], n1_[2] * n2_[0] - n1_[0] * n2_[2],
+                              n1_[0] * n2_[1] - n1_[1] * n2_[0]) == v1_ & v2_
+
         elif n2_[2] != 0:
             if n1_[2] / n2_[2] * n2_[0] == n1_[0] and n1_[2] / n2_[2] * n2_[1] == n1_[1]:
                 assert 0 == v1_ & v2_
+            else:
+                assert Vector(n1_[1]*n2_[2] - n2_[1]*n1_[2], n1_[2]*n2_[0] - n1_[0]*n2_[2], n1_[0]*n2_[1] - n1_[1]*n2_[0]) == v1_ & v2_
+
         elif n1_[0] == 0 and n1_[1] == 0 and n1_[2] == 0:
             assert 0 == v1_ & v2_
-        else:
-            assert Vector(n1_[1]*n2_[2] - n2_[1]*n1_[2], n1_[2]*n2_[0] - n1_[0]*n2_[2], n1_[0]*n2_[1] - n1_[1]*n2_[0]) == v1_ & v2_
 
-'''
+
 def test_for_vector_length(n1, v1):
     for n1_, v1_ in zip(n1, v1):
-        a = (n1_[0]**2 + n1_[1]**2 + n1[2]**2)**0.5
+        a = (n1_[0]**2 + n1_[1]**2 + n1_[2]**2)**0.5
         assert a == v1_.length()
-'''
+
 
 def test_for_vector_sub(n1, n2, v1, v2):
     for n1_, n2_, v1_, v2_ in zip(n1, n2, v1, v2):
