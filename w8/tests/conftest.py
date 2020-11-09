@@ -29,13 +29,13 @@ def data3():
 @pytest.fixture()
 def big_datas():
     big_array = []
-    n1 = random.randint(1, 10)
+    n1 = random.randint(1, 5)
     for p in range (n1):
         array = []
-        n2 = random.randint(1, 10)
+        n2 = random.randint(1, 5)
         array = [[] for k in range(n2)]
         for k in range (n2):
-            n3 = random.randint(1, 10)
+            n3 = random.randint(1, 5)
             for j in range (n3):
                     array[k].append(random.randint(1, 1000))
         big_array.append(array)
