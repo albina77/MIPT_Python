@@ -1,5 +1,4 @@
 import sys, itertools, random
-sys.path.append('C:\\Users\\79821\\FilesForGit\\MIPT_Python\\w8')
 from w8_9 import maximize
 
 def func(i, tup):

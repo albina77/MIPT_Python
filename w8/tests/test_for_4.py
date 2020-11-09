@@ -1,6 +1,6 @@
-import sys, itertools
-sys.path.append('C:\\Users\\79821\\FilesForGit\\MIPT_Python\\w8')
+import sys, itertools, pytest
 from w8_4 import get_cartesian_product
+
 
 def test_for_cartesian_product(data1, data2, data3):
     for item in [data1, data2], [data1, data3], [data2, data3]:
