@@ -1,0 +1,7 @@
+numpy
+pytest
+setuptools
+coverage
+wheel
+pytest
+random

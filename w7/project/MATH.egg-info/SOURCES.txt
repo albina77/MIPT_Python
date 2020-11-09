@@ -1,0 +1,8 @@
+setup.py
+MATH.egg-info/PKG-INFO
+MATH.egg-info/SOURCES.txt
+MATH.egg-info/dependency_links.txt
+MATH.egg-info/top_level.txt
+my_mathematics/__init__.py
+my_mathematics/linear_algebra.py
+my_mathematics/math.py
