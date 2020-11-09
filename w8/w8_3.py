@@ -1,5 +1,8 @@
 def my_zip(*iters):
-    min_len = 10**10
+    if len(iters) == 0:
+        yield None
+    else:
+        min_len = len(iters[0])
     for i in iters:
         if len(i) < min_len:
             min_len = len(i)

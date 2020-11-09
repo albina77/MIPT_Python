@@ -1,10 +1,9 @@
 def print_map(func, iterable):
-    ind = True
-    while ind:
+    while True:
         try:
             print(func(next(iterable)))
         except StopIteration:
-            ind = False
+            break
 
 
 def function(x):
