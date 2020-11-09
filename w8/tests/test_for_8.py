@@ -1,5 +1,4 @@
 import sys, itertools, random
-sys.path.append('C:\\Users\\79821\\FilesForGit\\MIPT_Python\\w8')
 from w8_8 import compress_string
 
 def test_for_groupby(data1, data2, data3):

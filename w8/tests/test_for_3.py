@@ -1,5 +1,4 @@
 import sys, random
-sys.path.append('C:\\Users\\79821\\FilesForGit\\MIPT_Python\\w8')
 from w8_3 import my_zip, my_map, my_enumerate
 
 

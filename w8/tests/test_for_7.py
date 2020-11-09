@@ -1,5 +1,4 @@
 import sys, itertools, random
-sys.path.append('C:\\Users\\79821\\FilesForGit\\MIPT_Python\\w8')
 from w8_7 import get_combinations_with_r
 
 def test_for_get_combinations_with_r(data1, data2, data3):
