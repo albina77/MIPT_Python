@@ -2,7 +2,7 @@ def write_to_file(f_obj):
     while True:
         x = yield
         if x == 'disconnect':
-            yield break 
+            break
         f_obj.write(x + '\n')
 
 
