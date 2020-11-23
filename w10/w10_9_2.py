@@ -31,9 +31,9 @@ if __name__ == '__main__':
             processes = []
             for values in zip(cut(a, j), cut(b, j)):
                 processes.append(Process(target=_mul, args=(values[0], values[1])))
-            start = datetime.now()
             for process in processes:
                 process.start()
+                start = datetime.now()
             for process in processes:
                 process.join()
             tmp.append((datetime.now() - start).total_seconds())
