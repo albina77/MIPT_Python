@@ -5,3 +5,5 @@ coverage
 wheel
 pytest
 random
+aiohttp
+aiofile
