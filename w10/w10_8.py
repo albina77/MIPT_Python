@@ -46,4 +46,6 @@ if __name__ == '__main__':
     plt.ylabel('Время выполнения, [мс]')
     plt.xlabel('Число процессов')
     plt.show()
-
+'''
+pizda
+'''
